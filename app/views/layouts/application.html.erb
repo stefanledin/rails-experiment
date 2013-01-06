@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="sv">
+	<head>
+		<title>Pendlarkollen</title>
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= csrf_meta_tags %>
+		</head>
+	<body>
+
+		<div class="container" id="wrapper">
+			<%= yield %>
+		</div>
+		
+		<%= javascript_include_tag "application" %>	
+	</body>
+</html>

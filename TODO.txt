@@ -1,0 +1,11 @@
+=> Starta ny resa. (Datum, tid, ort, avgångstid enligt tidtabell)
+=> Avsluta ny resa. (Datum, tid, ort, ankomsttid enligt tidtabell)
+=> Räkna ut diff mellan verklig avgångstid vs enligt tidtabell + dito för ankomst. 
+=> Spara båda tiderna och diffen i db.
+
+Schema: id, datum(YYYY-MM-DD), avgångstidTidTabell(HH:MM), verkligAvgångstid(HH:MM), iTid (BOOL), ankomstTidTabell(HH:MM), verkligAnkomstTid(HH:MM), iTID (BOOL).
+
+=> Ange presets/förvalda resor.
+=> Rangordna dom
+
+Schema: id, namn, från, avgångstid, till, avgångstid.

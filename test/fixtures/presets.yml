@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  label: MyString
+  from: MyString
+  fromtime: MyString
+  to: MyString
+  totime: MyString
+
+two:
+  label: MyString
+  from: MyString
+  fromtime: MyString
+  to: MyString
+  totime: MyString
