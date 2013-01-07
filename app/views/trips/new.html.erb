@@ -1,0 +1,6 @@
+<h1>Lägg till resa</h1>
+<%= form_tag do %>
+	<%= label_tag :avresa, 'Avresa' %>
+	<%= text_field_tag :avresa %>
+	<%= submit_tag "Spara resa", :class => 'btn' %>
+<% end %>
