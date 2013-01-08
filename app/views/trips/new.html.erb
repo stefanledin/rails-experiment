@@ -1,6 +1,59 @@
 <h1>Lägg till resa</h1>
-<%= form_tag do %>
-	<%= label_tag :avresa, 'Avresa' %>
-	<%= text_field_tag :avresa %>
+
+<%= form_tag '/trips' do %>
+
+	<div class="control-group">
+		<%= label_tag :datum, 'Datum', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :datum %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :fran, 'Från', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :fran %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :till, 'Till', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :till %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :avgangtabell, 'Avgång enligt tidtabell', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :avgangtabell %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :avgangverklig, 'Verklig avgångstid', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :avgangverklig %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :ankomsttabell, 'Ankomsttid enligt tidtabell', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :ankomsttabell %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :ankomstverklig, 'Verklig ankomsttid', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :ankomstverklig %>
+		</div>
+	</div>
+	
 	<%= submit_tag "Spara resa", :class => 'btn' %>
+
 <% end %>
+
+
+<!--attr_accessible :ankomstitid, :ankomsttabell, :ankomstverklig, :avgangitid, :avgangtabell, :avgangverklig, :datum, :user_id-->
