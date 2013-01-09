@@ -1,8 +1,39 @@
 <h1>Home#index</h1>
 <p class="lead">Find me in app/views/home/index.html.erb</p>
 <h3>Mina resor</h3>
+
+<% unless @trips.nil? %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>Datum</td>
+				<td>Från</td>
+				<td>Avgång enligt tidtabell</td>
+				<td>Verklig avgångstid</td>
+				<td>Till</td>
+				<td>Ankomst enligt tidtabell</td>
+				<td>Verklig ankomsttid</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @trips.each do |trip| %>
+			<tr>
+				<td><%=trip.datum %></td>
+				<td><%=trip.fran %></td>
+				<td><%=trip.avgangtabell %></td>
+				<td><%=trip.avgangverklig %></td>
+				<td><%=trip.till %></td>
+				<td><%=trip.ankomsttabell %></td>
+				<td><%=trip.ankomstverklig %></td>
+			</tr>
+			<% end %>
+		</tbody>
+		<tr></tr>
+	</table>
+<% end %>
+
 <%= link_to 'Lägg till resa', new_trip_path %>
-<% if @presets %>
+<% if !@presets.blank? %>
 	<h3>Favoriter</h3>
 	<ul>
 		<% @presets.each do |preset| %>

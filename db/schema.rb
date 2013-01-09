@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106133654) do
+ActiveRecord::Schema.define(:version => 20130109050554) do
 
   create_table "presets", :force => true do |t|
     t.string   "label"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(:version => 20130106133654) do
     t.boolean  "ankomstitid"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "fran"
+    t.string   "till"
+    t.string   "diff1"
+    t.string   "diff2"
   end
 
   create_table "users", :force => true do |t|
