@@ -2,7 +2,7 @@
 <p class="lead">Find me in app/views/home/index.html.erb</p>
 <h3>Mina resor</h3>
 
-<% unless @trips.nil? %>
+<% if !@trips.blank? %>
 	<table class="table table-striped">
 		<thead>
 			<tr>
