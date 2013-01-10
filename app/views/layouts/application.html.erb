@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 	<head>
 		<title>Pendlarkollen</title>
 		<%= stylesheet_link_tag "application", :media => "all" %>
 		<%= csrf_meta_tags %>
 		</head>
 	<body>
+		<div id="fb-root"></div>
+		<script>
+		  window.fbAsyncInit = function() {
+		    // init the FB JS SDK
+		    FB.init({
+		      appId      : '128327427333621', // App ID from the App Dashboard
+		      status     : true, // check the login status upon init?
+		      cookie     : true, // set sessions cookies to allow your server to access the session?
+		    });
+
+		    FB.Event.subscribe('auth.login', function(response) {
+		    	console.log(response);
+		    });
+
+		  };
+
+		  (function(d, debug){
+		     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement('script'); js.id = id; js.async = true;
+		     js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+		     ref.parentNode.insertBefore(js, ref);
+		   }(document, /*debug*/ false));
+		</script>
 
 		<div class="container" id="wrapper">
 			<%= yield %>
