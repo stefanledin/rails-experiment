@@ -6,6 +6,9 @@ class TripsController < ApplicationController
 	end
 
 	def new
+		if params[:preset]
+			@preset = Preset.find(params[:preset])
+		end
 	end
 
 	def create

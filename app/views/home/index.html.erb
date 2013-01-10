@@ -38,8 +38,7 @@
 	<h3>Favoriter</h3>
 	<ul>
 		<% @presets.each do |preset| %>
-			<li><%= link_to preset.label, new_preset_path %></li>
-			<%= debug preset %>
+			<li><%= link_to preset.label, new_trip_path(:preset => preset.id) %></li>
 		<% end %>
 	</ul>
 <% end %>
