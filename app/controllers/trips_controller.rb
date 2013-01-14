@@ -6,13 +6,15 @@ class TripsController < ApplicationController
 	end
 
 	def new
+		@user = User.where("user_id = ?", session[:fb_user]['id']).first
 		if params[:preset]
 			@preset = Preset.find(params[:preset])
 		end
 	end
 
 	def create
-		
+		@user = User.where("user_id = ?", session[:fb_user]['id']).first
+
 		if params[:avgangtabell] == params[:avgangverklig]
 			avGangITID = true
 		else
@@ -25,7 +27,7 @@ class TripsController < ApplicationController
 			ankomstITID = false
 		end
 			
-		Trip.create({
+		@user.trips.create({
 			:datum => params[:datum],
 			:fran => params[:fran],
 			:till => params[:till],
