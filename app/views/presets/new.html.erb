@@ -1,0 +1,42 @@
+<h1>Lägg till favorit</h1>
+
+<%= form_tag '/presets' do %>
+
+	<div class="control-group">
+		<%= label_tag :label, 'Namn', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :label %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :from, 'Från', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :from %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :to, 'Till', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :to %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :fromtime, 'Avgång enligt tidtabell', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :fromtime %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= label_tag :totime, 'Ankomsttid enligt tidtabell', :class => 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :totime %>
+		</div>
+	</div>
+	
+	<%= submit_tag "Spara resa", :class => 'btn btn-primary' %>
+
+<% end %>
