@@ -33,7 +33,8 @@
 	</table>
 <% end %>
 
-<%= link_to 'Lägg till resa', new_trip_path %>
+<%= link_to 'Lägg till resa', new_trip_path, :class => 'btn' %>
+
 <% if !@presets.blank? %>
 	<h3>Favoriter</h3>
 	<ul>
@@ -43,3 +44,4 @@
 	</ul>
 <% end %>
 
+<%= link_to 'Lägg till favorit', new_preset_path, :class => 'btn' %>
