@@ -14,21 +14,33 @@
 	<div class="control-group">
 		<%= label_tag :fran, 'Från', :class => 'control-label' %>
 		<div class="controls">
-			<%= text_field_tag :fran %>
+			<% if @preset %>
+				<%= text_field_tag :fran, @preset[:from]  %>
+			<% else %>
+				<%= text_field_tag :fran  %>
+			<% end %>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<%= label_tag :till, 'Till', :class => 'control-label' %>
 		<div class="controls">
-			<%= text_field_tag :till %>
+			<% if @preset %>
+				<%= text_field_tag :till, @preset[:to]  %>
+			<% else %>
+				<%= text_field_tag :till  %>
+			<% end %>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<%= label_tag :avgangtabell, 'Avgång enligt tidtabell', :class => 'control-label' %>
 		<div class="controls">
-			<%= text_field_tag :avgangtabell %>
+			<% if @preset %>
+				<%= text_field_tag :avgangtabell, @preset[:fromtime]  %>
+			<% else %>
+				<%= text_field_tag :avgangtabell  %>
+			<% end %>
 		</div>
 	</div>
 
@@ -42,7 +54,11 @@
 	<div class="control-group">
 		<%= label_tag :ankomsttabell, 'Ankomsttid enligt tidtabell', :class => 'control-label' %>
 		<div class="controls">
-			<%= text_field_tag :ankomsttabell %>
+			<% if @preset %>
+				<%= text_field_tag :ankomsttabell, @preset[:totime]  %>
+			<% else %>
+				<%= text_field_tag :ankomsttabell  %>
+			<% end %>
 		</div>
 	</div>
 
@@ -53,7 +69,7 @@
 		</div>
 	</div>
 	
-	<%= submit_tag "Spara resa", :class => 'btn' %>
+	<%= submit_tag "Spara resa", :class => 'btn btn-primary' %>
 
 <% end %>
 
