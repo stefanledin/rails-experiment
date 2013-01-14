@@ -2,8 +2,16 @@ class PresetsController < ApplicationController
 	def index
 	end
 
+	def show
+		@preset = Preset.find(params[:id])
+	end
+
 	def new
 		@user = User.where("user_id = ?", session[:fb_user]['id']).first
+	end
+
+	def edit
+		@preset = Preset.find(params[:id])
 	end
 
 	def create
@@ -19,6 +27,13 @@ class PresetsController < ApplicationController
 		if @user.save
 			redirect_to root_url
 		end		
+	end
+
+	def update
+		@preset = Preset.find(params[:id])
+		if @preset.update_attributes(params[:post])
+			redirect_to @preset
+		end
 	end
 
 end
