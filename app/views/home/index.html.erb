@@ -39,7 +39,10 @@
 	<h3>Favoriter</h3>
 	<ul>
 		<% @presets.each do |preset| %>
-			<li><%= link_to preset.label, new_trip_path(:preset => preset.id) %></li>
+			<li>
+				<%= link_to preset.label, edit_preset_path(preset) %> <br>
+				<%= link_to 'Ny resa', new_trip_path(:preset => preset.id), :class => 'btn btn-primary' %>
+			</li>
 		<% end %>
 	</ul>
 <% end %>
