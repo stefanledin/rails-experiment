@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	require 'koala'
 
 	def index
-		@oauth = Koala::Facebook::OAuth.new(128327427333621,'30fb84285d1f9c0013f9614cead58d24', root_url )
+		@oauth = Koala::Facebook::OAuth.new('APPID','APPSECRET', root_url )
 		
 		# När man skickas tillbaka från inloggningsrutan 
 		if params[:code] && !session[:fb_user]
