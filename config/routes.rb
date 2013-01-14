@@ -1,10 +1,19 @@
 Pendlarkollen::Application.routes.draw do
 
+  # Root
   root :to => 'home#index'
 
+  # Get
   get "home/test"
+  
+  # Resources
   resources :presets
   resources :trips
+
+  # Match
+  match '/login' => 'home#login'
+  match '/logout' => 'home#logout'
+  match '/register' => 'home#register'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
