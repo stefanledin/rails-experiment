@@ -1,0 +1,8 @@
+<h1><%= @preset.label %></h1>
+<ul>
+	<li><strong>Från:</strong> <%= @preset.from %></li>
+	<li><strong>Till:</strong> <%= @preset.to %></li>
+	<li><strong>Avgång enligt tidtabell:</strong> <%= @preset.fromtime %></li>
+	<li><strong>Ankomst enligt tidtabell:</strong> <%= @preset.totime %></li>
+</ul>
+<%= link_to 'Redigera', edit_preset_path(@preset), :class => 'btn' %>
