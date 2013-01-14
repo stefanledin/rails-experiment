@@ -1,0 +1,42 @@
+<h1>Redigera favorit</h1>
+
+<%= form_for @preset do |p| %>
+
+	<div class="control-group">
+		<%= p.label :label, 'Namn', :class => 'control-label' %>
+		<div class="controls">
+			<%= p.text_field :label %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= p.label :from, 'Från', :class => 'control-label' %>
+		<div class="controls">
+			<%= p.text_field :from %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= p.label :to, 'Till', :class => 'control-label' %>
+		<div class="controls">
+			<%= p.text_field :to %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= p.label :fromtime, 'Avgång enligt tidtabell', :class => 'control-label' %>
+		<div class="controls">
+			<%= p.text_field :fromtime %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= p.label :totime, 'Ankomsttid enligt tidtabell', :class => 'control-label' %>
+		<div class="controls">
+			<%= p.text_field :totime %>
+		</div>
+	</div>
+	
+	<%= submit_tag "Uppdatera resa", :class => 'btn btn-primary' %>
+
+<% end %>
