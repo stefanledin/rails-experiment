@@ -31,7 +31,7 @@ class PresetsController < ApplicationController
 
 	def update
 		@preset = Preset.find(params[:id])
-		if @preset.update_attributes(params[:post])
+		if @preset.update_attributes(params[:preset])
 			redirect_to @preset
 		end
 	end
