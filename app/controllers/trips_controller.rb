@@ -19,6 +19,11 @@ class TripsController < ApplicationController
 			avGangITID = true
 		else
 			avGangITID = false
+			avgangtabell = params[:avgangtabell]
+			#Split -
+			#Time.new(YYYY,MM,DD,HH,MM)
+			avgangverklig = params[:avgangverklig]
+			diff1 = avgangverklig - avgangtabell
 		end
 
 		if params[:ankomsttabell] == params[:ankomstverklig]
