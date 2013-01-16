@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109050554) do
+ActiveRecord::Schema.define(:version => 20130115203202) do
 
   create_table "presets", :force => true do |t|
     t.string   "label"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130109050554) do
 
   create_table "trips", :force => true do |t|
     t.integer  "user_id"
-    t.date     "datum"
+    t.datetime "datum"
     t.string   "avgangtabell"
     t.string   "avgangverklig"
     t.boolean  "avgangitid"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20130109050554) do
     t.datetime "updated_at",     :null => false
     t.string   "fran"
     t.string   "till"
-    t.string   "diff1"
-    t.string   "diff2"
+    t.integer  "diff1"
+    t.integer  "diff2"
   end
 
   create_table "users", :force => true do |t|
