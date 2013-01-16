@@ -2,6 +2,7 @@
 <html lang="sv" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 	<head>
 		<title>Pendlarkollen</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<%= stylesheet_link_tag "application", :media => "all" %>
 		<%= csrf_meta_tags %>
 		</head>
@@ -15,7 +16,9 @@
 				<a href="<%= @oauth.url_for_oauth_code %>" class="btn btn-primary">Logga in med Facebook</a>
 			<% end %>	
 			</div>
-			<%= yield %>
+			<div class="row-fluid">
+				<%= yield %>
+			</div>
 		</div>
 		
 		<%= javascript_include_tag "application" %>	
