@@ -1,3 +1,8 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.delayed,
+.table-striped tbody > tr:nth-child(odd) > td.delayed {
+	background: rgba(255,0,0,.5);
+}
+.in-time,
+.table-striped tbody > tr:nth-child(odd) > td.in-time {
+	background: rgba(0,255,0,.5);
+}
