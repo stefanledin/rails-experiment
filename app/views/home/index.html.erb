@@ -20,20 +20,62 @@
 			</tr>
 		</thead>
 		<tbody>
+			<% masterDiff = 0 %>
 			<% @trips.each do |trip| %>
-			<tr>
-				<td><%=trip.datum.strftime('%Y-%m-%d') %></td>
-				<td><%=trip.fran %></td>
-				<td><%=trip.avgangtabell %></td>
-				<td><%=trip.avgangverklig %></td>
-				<td class="success"><%=Time.at(trip.diff1).gmtime.strftime('%H:%M') if !trip.diff1.nil? %></td>
-				<td><%=trip.till %></td>
-				<td><%=trip.ankomsttabell %></td>
-				<td><%=trip.ankomstverklig %></td>
-				<td><%=Time.at(trip.diff2).gmtime.strftime('%H:%M') if !trip.diff2.nil?  %></td>
-				<td></td>
-			</tr>
+				<%
+				if !trip.avgangitid
+					totalDiff = trip.diff1
+					avgangForsening = Time.at(trip.diff1).gmtime.strftime('%H:%M')	
+				else
+					totalDiff = 0
+					avgangForsening = 0
+				end
+
+				if !trip.ankomstitid
+					totalDiff += trip.diff2
+					ankomstForsening = Time.at(trip.diff2).gmtime.strftime('%H:%M')	
+				else
+					totalDiff += 0
+					ankomstForsening = 0
+				end
+
+				masterDiff += totalDiff
+				totalDiff = Time.at(totalDiff).gmtime.strftime('%H:%M')
+
+				%>
+				<tr>
+					<td><%=trip.datum.strftime('%Y-%m-%d') %></td>
+					<td><%=trip.fran %></td>
+					<td><%=trip.avgangtabell %></td>
+					<td><%=trip.avgangverklig %></td>
+					<td class="<%= trip.avgangitid ? 'in-time' : 'delayed' %>">
+						<%= avgangForsening %>
+					</td>
+					<td><%=trip.till %></td>
+					<td><%=trip.ankomsttabell %></td>
+					<td><%=trip.ankomstverklig %></td>
+					<td class="<%= trip.ankomstitid ? 'in-time' : 'delayed' %>">
+						<%= ankomstForsening %>
+					</td>
+					<td>
+						<%= totalDiff %>
+					</td>
+				</tr>
 			<% end %>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><%= Time.at(masterDiff).gmtime.strftime('%H:%M')%></td>
+				</tr>
+			</tfoot>
 		</tbody>
 		<tr></tr>
 	</table>
