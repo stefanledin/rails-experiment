@@ -11,21 +11,27 @@
 				<td>Från</td>
 				<td>Avgång enligt tidtabell</td>
 				<td>Verklig avgångstid</td>
+				<td>Försening</td>
 				<td>Till</td>
 				<td>Ankomst enligt tidtabell</td>
 				<td>Verklig ankomsttid</td>
+				<td>Försening</td>
+				<td>Total försening</td>
 			</tr>
 		</thead>
 		<tbody>
 			<% @trips.each do |trip| %>
 			<tr>
-				<td><%=trip.datum %></td>
+				<td><%=trip.datum.strftime('%Y-%m-%d') %></td>
 				<td><%=trip.fran %></td>
 				<td><%=trip.avgangtabell %></td>
 				<td><%=trip.avgangverklig %></td>
+				<td class="success"><%=Time.at(trip.diff1).gmtime.strftime('%H:%M') if !trip.diff1.nil? %></td>
 				<td><%=trip.till %></td>
 				<td><%=trip.ankomsttabell %></td>
 				<td><%=trip.ankomstverklig %></td>
+				<td><%=Time.at(trip.diff2).gmtime.strftime('%H:%M') if !trip.diff2.nil?  %></td>
+				<td></td>
 			</tr>
 			<% end %>
 		</tbody>
