@@ -4,7 +4,7 @@
 		var textField = document.querySelector('input#'+this.dataset.now),
 		t = new Date(),
 		hour = (t.getHours() < 10) ? '0' + t.getHours() : t.getHours();
-		console.log(hour);
-		textField.value="'+hour+'";
+		minutes = (t.getMinutes() < 10) ? '0' + t.getMinutes() : t.getMinutes();
+		textField.value=hour+':'+minutes;
 	});
 });
