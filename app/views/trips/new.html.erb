@@ -45,7 +45,7 @@
 	<div class="control-group">
 		<%= label_tag :avgangverklig, 'Verklig avgångstid', :class => 'control-label' %>
 		<div class="controls">
-			<%= text_field_tag :avgangverklig %>
+			<%= text_field_tag :avgangverklig %> <button data-now="avgangverklig" class="btn now">Nu</button>
 		</div>
 	</div>
 
@@ -63,7 +63,7 @@
 	<div class="control-group">
 		<%= label_tag :ankomstverklig, 'Verklig ankomsttid', :class => 'control-label' %>
 		<div class="controls">
-			<%= text_field_tag :ankomstverklig %>
+			<%= text_field_tag :ankomstverklig %> <button data-now="ankomstverklig" class="btn now ankomstverklig">Nu</button>
 		</div>
 	</div>
 	
