@@ -2,7 +2,11 @@
 	<div class="hero-unit">
 		<h1>Pendlarkollen</h1>
 		<p class="lead">Åker du mycket tåg eller buss?<br>Ofta försenad?</p>
-		<p>Nyfiken på hur ofta och hur mycket försenad du blir? Logga in med ditt Facebook-konto och börja föra statistik över dina resor och förseningar.</p>
+		<% if @user.nil? %>
+			<p>Nyfiken på hur ofta och hur mycket försenad du blir? Logga in med ditt Facebook-konto och börja föra statistik över dina resor och förseningar.</p>
+		<% else %>
+			<%= link_to 'Lägg till resa', new_trip_path, :class => 'btn' %>
+		<% end %>
 	</div>
 </div>
 
