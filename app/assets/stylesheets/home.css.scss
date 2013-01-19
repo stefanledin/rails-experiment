@@ -6,3 +6,24 @@
 .table-striped tbody > tr:nth-child(odd) > td.in-time {
 	background: rgba(0,255,0,.5);
 }
+
+@media (max-width: 767px) {
+
+	.hero-unit {
+		padding: 10px;
+
+		h1 {
+			font-size: 35px;
+		}
+
+		.lead {
+			font-size: 14px;
+		}
+
+	}
+
+	h2 {
+		font-size: 22px;
+	}
+
+}
