@@ -8,6 +8,45 @@
 
 <% if !@user.nil? %>
 	<div class="row">
+
+		<section class="my-favorites">
+			<% if !@presets.blank? %>
+				<h3>Favoriter</h3>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td>Namn</td>
+							<td>Från</td>
+							<td>Till</td>
+							<td>Avgångstid</td>
+							<td>Ankomsttid</td>
+							<td> </td>
+						</tr>
+					</thead>
+					<tbody>
+					<% @presets.each do |preset| %>
+						<tr>
+							<td>
+								<strong>
+									<%= link_to preset.label, edit_preset_path(preset) %>
+								</strong>
+							</td>
+							<td><%= preset.from %></td>
+							<td><%= preset.to %></td>
+							<td><%= preset.fromtime %></td>
+							<td><%= preset.totime %></td>
+							<td>
+								<%= link_to 'Ny resa', new_trip_path(:preset => preset.id), :class => 'btn btn-primary pull-right' %>
+							</td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+			<% end %>
+
+			<%= link_to 'Lägg till favorit', new_preset_path, :class => 'btn' %>
+		</section>
+
 		<section class="my-trips">
 			<h3>Mina resor</h3>
 
@@ -89,44 +128,6 @@
 			<% end %>
 
 			<%= link_to 'Lägg till resa', new_trip_path, :class => 'btn' %>
-		</section>
-
-		<section class="my-favorites">
-			<% if !@presets.blank? %>
-				<h3>Favoriter</h3>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<td>Namn</td>
-							<td>Från</td>
-							<td>Till</td>
-							<td>Avgångstid</td>
-							<td>Ankomsttid</td>
-							<td> </td>
-						</tr>
-					</thead>
-					<tbody>
-					<% @presets.each do |preset| %>
-						<tr>
-							<td>
-								<strong>
-									<%= link_to preset.label, edit_preset_path(preset) %>
-								</strong>
-							</td>
-							<td><%= preset.from %></td>
-							<td><%= preset.to %></td>
-							<td><%= preset.fromtime %></td>
-							<td><%= preset.totime %></td>
-							<td>
-								<%= link_to 'Ny resa', new_trip_path(:preset => preset.id), :class => 'btn btn-primary' %>
-							</td>
-						</tr>
-					<% end %>
-					</tbody>
-				</table>
-			<% end %>
-
-			<%= link_to 'Lägg till favorit', new_preset_path, :class => 'btn' %>
 		</section>
 
 	</div>
