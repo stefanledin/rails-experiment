@@ -1,98 +1,126 @@
-<h1>Home#index</h1>
-<p class="lead">Find me in app/views/home/index.html.erb</p>
+<div class="row">
+	<div class="hero-unit">
+		<h1>Pendlarkollen</h1>
+		<p class="lead">Åker du mycket tåg eller buss?<br>Ofta försenad?</p>
+		<p>Nyfiken på hur ofta och hur mycket försenad du blir? Logga in med ditt Facebook-konto och börja föra statistik över dina resor och förseningar.</p>
+	</div>
+</div>
 
-<h3>Mina resor</h3>
+<% if !@user.nil? %>
+	<div class="row">
+		<h3>Mina resor</h3>
 
-<% if !@trips.blank? %>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<td>Datum</td>
-				<td>Från</td>
-				<td>Avgång enligt tidtabell</td>
-				<td>Verklig avgångstid</td>
-				<td>Försening</td>
-				<td>Till</td>
-				<td>Ankomst enligt tidtabell</td>
-				<td>Verklig ankomsttid</td>
-				<td>Försening</td>
-				<td>Total försening</td>
-			</tr>
-		</thead>
-		<tbody>
-			<% masterDiff = 0 %>
-			<% @trips.each do |trip| %>
-				<%
-				if !trip.avgangitid
-					totalDiff = trip.diff1
-					avgangForsening = Time.at(trip.diff1).gmtime.strftime('%H:%M')	
-				else
-					totalDiff = 0
-					avgangForsening = 0
-				end
+		<% if !@trips.blank? %>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td>Datum</td>
+						<td>Från</td>
+						<td>Avgång enligt tidtabell</td>
+						<td>Verklig avgångstid</td>
+						<td>Försening</td>
+						<td>Till</td>
+						<td>Ankomst enligt tidtabell</td>
+						<td>Verklig ankomsttid</td>
+						<td>Försening</td>
+						<td>Total försening</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% masterDiff = 0 %>
+					<% @trips.each do |trip| %>
+						<%
+						if !trip.avgangitid
+							totalDiff = trip.diff1
+							avgangForsening = Time.at(trip.diff1).gmtime.strftime('%H:%M')	
+						else
+							totalDiff = 0
+							avgangForsening = 0
+						end
 
-				if !trip.ankomstitid
-					totalDiff += trip.diff2
-					ankomstForsening = Time.at(trip.diff2).gmtime.strftime('%H:%M')	
-				else
-					totalDiff += 0
-					ankomstForsening = 0
-				end
+						if !trip.ankomstitid
+							totalDiff += trip.diff2
+							ankomstForsening = Time.at(trip.diff2).gmtime.strftime('%H:%M')	
+						else
+							totalDiff += 0
+							ankomstForsening = 0
+						end
 
-				masterDiff += totalDiff
-				totalDiff = Time.at(totalDiff).gmtime.strftime('%H:%M')
+						masterDiff += totalDiff
+						totalDiff = Time.at(totalDiff).gmtime.strftime('%H:%M')
 
-				%>
-				<tr>
-					<td><%=trip.datum.strftime('%Y-%m-%d') %></td>
-					<td><%=trip.fran %></td>
-					<td><%=trip.avgangtabell %></td>
-					<td><%=trip.avgangverklig %></td>
-					<td class="<%= trip.avgangitid ? 'in-time' : 'delayed' %>">
-						<%= avgangForsening %>
-					</td>
-					<td><%=trip.till %></td>
-					<td><%=trip.ankomsttabell %></td>
-					<td><%=trip.ankomstverklig %></td>
-					<td class="<%= trip.ankomstitid ? 'in-time' : 'delayed' %>">
-						<%= ankomstForsening %>
-					</td>
-					<td>
-						<%= totalDiff %>
-					</td>
-				</tr>
-			<% end %>
-			<tfoot>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><%= Time.at(masterDiff).gmtime.strftime('%H:%M')%></td>
-				</tr>
-			</tfoot>
-		</tbody>
-		<tr></tr>
-	</table>
-<% end %>
-
-<%= link_to 'Lägg till resa', new_trip_path, :class => 'btn' %>
-
-<% if !@presets.blank? %>
-	<h3>Favoriter</h3>
-	<ul>
-		<% @presets.each do |preset| %>
-			<li>
-				<%= link_to preset.label, edit_preset_path(preset) %> <br>
-				<%= link_to 'Ny resa', new_trip_path(:preset => preset.id), :class => 'btn btn-primary' %>
-			</li>
+						%>
+						<tr>
+							<td><%=trip.datum.strftime('%Y-%m-%d') %></td>
+							<td><%=trip.fran %></td>
+							<td><%=trip.avgangtabell %></td>
+							<td><%=trip.avgangverklig %></td>
+							<td class="<%= trip.avgangitid ? 'in-time' : 'delayed' %>">
+								<%= avgangForsening %>
+							</td>
+							<td><%=trip.till %></td>
+							<td><%=trip.ankomsttabell %></td>
+							<td><%=trip.ankomstverklig %></td>
+							<td class="<%= trip.ankomstitid ? 'in-time' : 'delayed' %>">
+								<%= ankomstForsening %>
+							</td>
+							<td>
+								<%= totalDiff %>
+							</td>
+						</tr>
+					<% end %>
+					<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><%= Time.at(masterDiff).gmtime.strftime('%H:%M')%></td>
+						</tr>
+					</tfoot>
+				</tbody>
+				<tr></tr>
+			</table>
 		<% end %>
-	</ul>
-<% end %>
 
-<%= link_to 'Lägg till favorit', new_preset_path, :class => 'btn' %>
+		<%= link_to 'Lägg till resa', new_trip_path, :class => 'btn' %>
+
+		<% if !@presets.blank? %>
+			<h3>Favoriter</h3>
+			<ul>
+				<% @presets.each do |preset| %>
+					<li>
+						<%= link_to preset.label, edit_preset_path(preset) %> <br>
+						<%= link_to 'Ny resa', new_trip_path(:preset => preset.id), :class => 'btn btn-primary' %>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<%= link_to 'Lägg till favorit', new_preset_path, :class => 'btn' %>
+
+	</div>
+
+<% else %>
+
+	<div class="row">
+		<div class="span4">
+			<h2>Lägg till resa</h2>
+			<p>Logga in och starta en resa när du sätter dig på bussen eller tåget. Avsluta den när du stiger av.<br>Var du framme i tid?</p>
+		</div>
+		<div class="span4">
+			<h2>Skapa favoriter</h2>
+			<p>Pendlar du och åker samma buss eller tåg varje dag? Skapa en favoritresa och det enda du behöver göra när du sedan reser är att ange avgång- och ankomsttid.<br>De verkliga alltså.</p>
+		</div>
+		<div class="span4">
+			<h2>Se statistik</h2>
+			<p>Några minuter här och där låter kanske inte som så mycket. Men under en vecka, eller varför inte en månad eller ett år, blir det en hel del.<br>Se hur mycket av din dyrbara tid som du gått miste om tack vare förseningar.<br>Om du vågar.</p>
+		</div>
+	</div>
+
+<% end %>
