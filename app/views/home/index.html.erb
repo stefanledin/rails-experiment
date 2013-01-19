@@ -15,7 +15,7 @@
 
 		<section class="my-favorites">
 			<% if !@presets.blank? %>
-				<h3>Favoriter</h3>
+				<h2>Favoriter</h2>
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -52,7 +52,7 @@
 		</section>
 
 		<section class="my-trips">
-			<h3>Mina resor</h3>
+			<h2>Mina resor</h2>
 
 			<% if !@trips.blank? %>
 				<table class="table table-striped">
@@ -132,6 +132,26 @@
 			<% end %>
 
 			<%= link_to 'Lägg till resa', new_trip_path, :class => 'btn' %>
+
+			<h3>Statistik</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td><strong>Totalt antal resor</strong></td>
+						<td><strong>Resor utan försening</strong></td>
+						<td><strong>Försenade resor</strong></td>
+						<td><strong>%</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @trips.count %></td>
+						<td><%= @trips_inTime %></td>
+						<td><%= @trips.count - @trips_inTime %></td>
+						<td><%= number_to_percentage(@trips_inTime.to_f / @trips.count * 100, :precision => 0) %></td>
+					</tr>
+				</tbody>
+			</table>
 		</section>
 
 	</div>
